@@ -16,12 +16,12 @@ describe("Person", () => {
     });
 
     it("should calculate BMI value", () => {
-        person.calculate_bmi();
+        person.calculate_metric();
         expect(person.bmiValue).to.equal(26.01);
     });
 
     it("should have a BMI Message", () => {
-        person.calculate_bmi();
+        person.calculate_metric();
         expect(person.bmiMessage).to.equal('Overweight');
     });
 });

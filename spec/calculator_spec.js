@@ -27,7 +27,7 @@ describe("BMICalculator", function() {
   let person;
 
   beforeEach(function() {
-    person = new Person({weight: 180, height: 71});
+    person = new Person({weight_lbs: 180, height_ft: 5, height_in: 11});
     calculator = new BMICalculator();
   });
 
