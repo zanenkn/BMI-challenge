@@ -20,38 +20,38 @@
 
       <div id="Metric" class="tabcontent">
 
-            <form id="calculate">
+            <form id="calculate_metric">
                     <div id="metric-inputs">
                         <input type="text" id="weight-in-kgs" placeholder="Weight">
                         <input type="text" id="height-in-cm" placeholder="Height">
                     </div>
             
-                    <button type="submit" value="Calculate"> Calculate </button>
+                    <button type="submit" value="Calculate" id="metric"> Calculate </button>
             </form>
             <div>
-                <span id="display_value"></span>
-                <span id="display_message"></span>
+                <span id="display_metric_value"></span>
+                <span id="display_metric_message"></span>
             </div>
             
                 <script type="text/javascript">
                     const global = {}
             
-                    global.calculateForm = document.querySelector('#calculate');
-                    global.displayValueElement = document.querySelector('#display_value');
-                    global.displayMessageElement = document.querySelector('#display_message');
+                    global.calculateMetric = document.querySelector('#calculate_metric');
+                    global.displayValueMetric = document.querySelector('#display_metric_value');
+                    global.displayMessageMetric = document.querySelector('#display_metric_message');
             
                     document.addEventListener('DOMContentLoaded', () => {
-                        global.calculateForm.addEventListener('submit', event => {
+                        global.calculateMetric.addEventListener('submit', event => {
                             event.preventDefault();
-                            calculateBMI()
+                            calculateMetric()
                                 .then(person => { 
-                                    global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
-                                    global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+                                    global.displayValueMetric.innerHTML = `Your BMI is ${person.bmiValue}`;
+                                    global.displayMessageMetric.innerHTML = `and you are ${person.bmiMessage}`;
                                 })
                         })
                     });
             
-                    const calculateBMI = () => {
+                    const calculateMetric = () => {
                         return new Promise(resolve => {
                             let w = parseFloat(document.getElementById('weight-in-kgs').value);
                             let h = parseFloat(document.getElementById('height-in-cm').value);
