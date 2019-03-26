@@ -2,9 +2,7 @@
 function Person(attr) {
     this.weight = attr.weight;
     this.height = attr.height;
-    this.weight_lbs = attr.weight_lbs;
-    this.height_ft = attr.height_ft;
-    this.height_in = attr.height_in;
+    
 };
 
 Person.prototype.calculate_metric = function () {

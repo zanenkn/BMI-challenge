@@ -12,8 +12,8 @@ BMICalculator.prototype.metric_bmi = function(obj) {
   };
 
   BMICalculator.prototype.imperial_bmi = function(obj) {
-    let weight = obj.weight_lbs;
-    let height = (obj.height_ft * 12) + obj.height_in;
+    let weight = obj.weight;
+    let height = obj.height;
     if (weight > 0 && height > 0) {
       var finalBmi = (weight * 703) / (height * height);
       obj.bmiValue =  parseFloat(finalBmi.toFixed(2));

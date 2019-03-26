@@ -27,7 +27,7 @@ describe("BMICalculator", function() {
   let person;
 
   beforeEach(function() {
-    person = new Person({weight_lbs: 180, height_ft: 5, height_in: 11});
+    person = new Person({weight: 180, height: 71});
     calculator = new BMICalculator();
   });
 
@@ -36,7 +36,7 @@ describe("BMICalculator", function() {
     expect(person.bmiValue).to.equal(25.10);
   });
 
-it("sets BMI message for a person using imperial method", () => {
+  it("sets BMI message for a person using imperial method", () => {
     calculator.imperial_bmi(person);
     expect(person.bmiMessage).to.equal('Overweight');
   });
