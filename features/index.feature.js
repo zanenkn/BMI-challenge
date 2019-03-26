@@ -26,8 +26,26 @@ describe('User can calculate BMI', () => {
         expect(content).to.eql('Your BMI is 27.76');
     });
 
+});
+
+describe('User can calculate BMI', () => {
+    before(async () => {
+        await browser.init()
+        await browser.visitPage('http://localhost:8080/')
+    });
+
+    beforeEach(async () => {
+        await browser.page.reload();
+    });
+
+    after(async () => {
+        await browser.close();
+    });
+
+
     it('using imperial method by inputing his weight and height', async () => {
 
+        await browser.clickOnButton("button[id='notdef']")
         await browser.fillIn("input[id='weight-in-lbs']", { with: "180" })
         await browser.fillIn("input[id='height-in-ft']", { with: "5" })
         await browser.fillIn("input[id='height-in-in']", { with: "11" })
@@ -35,7 +53,6 @@ describe('User can calculate BMI', () => {
         await browser.clickOnButton("button[id='imperial']")
         let content = await browser.getContent("span[id='display_imperial_value']")
         expect(content).to.eql('Your BMI is 25.1');
-});
-
+    });
 
 });
