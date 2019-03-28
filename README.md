@@ -1,2 +1,2 @@
 # BMI-challenge
-# Calculate you BMI using eithe Metric or Imperial inputs!
+# Calculate you BMI using either Metric or Imperial inputs!
