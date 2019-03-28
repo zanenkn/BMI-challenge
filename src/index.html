@@ -13,7 +13,7 @@
 <body>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Metric')" id="metric">Metric</button>
+    <button class="tablinks" onclick="openTab(event, 'Metric')", id="metric">Metric</button>
     <button class="tablinks" onclick="openTab(event, 'Imperial')" id="imperial">Imperial</button>
 </div>
         
@@ -24,12 +24,12 @@
         <div id="metric-inputs">
             <div>
                 <label>Your weight</label>
-                <input type="text" id="weight-in-kgs" placeholder="kg">
+                <input type="number" step="any" min="0" id="weight-in-kgs" placeholder="kg">
             </div>
             
             <div>
                 <label>Your height </label>
-                <input type="text" id="height-in-cm" placeholder="cm">
+                <input type="number" step="any" min="0" id="height-in-cm" placeholder="cm">
             </div>
         </div>
         
@@ -48,12 +48,12 @@
         <div id="imperial-inputs">
             <div>
                 <label>Your weight</label>
-                <input type="text" id="weight-in-lbs" placeholder="lbs">
+                <input type="number" step="any" min="0" id="weight-in-lbs" placeholder="lbs">
             </div>
             <div>
                 <label>Your height</label>
-                <input type="text" id="height-in-ft" placeholder="ft">
-                <input type="text" id="height-in-in" placeholder="in">
+                <input type="number" step="any" min="0" id="height-in-ft" placeholder="ft">
+                <input type="number" step="any" min="0"id="height-in-in" placeholder="in">
             </div>
         </div>
         

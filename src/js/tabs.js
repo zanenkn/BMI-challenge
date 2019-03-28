@@ -7,8 +7,9 @@ function startTab() {
 }
 
 
+
 function openTab(evt, methodName) {
-    var i, tabcontent, tablinks;
+    var i, tabcontent, tablinks; 
   
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -22,5 +23,9 @@ function openTab(evt, methodName) {
   
     document.getElementById(methodName).style.display = "block";
     evt.currentTarget.className += " active";
-
-  } 
+    
+    document.getElementById("calculate_metric").reset();
+    document.getElementById("calculate_imperial").reset();
+    global.displayMetricMessage.innerHTML = " ";
+    global.displayImperialMessage.innerHTML = " ";
+} 
