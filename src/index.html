@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Calculate your BMI</title>
     <link rel="stylesheet" href="style.css">
     <script src="js/person.js"></script>
     <script src="js/calculator.js"></script>
@@ -22,8 +22,15 @@
 
     <form id="calculate_metric">
         <div id="metric-inputs">
-            <input type="text" id="weight-in-kgs" placeholder="Weight in kg">
-            <input type="text" id="height-in-cm" placeholder="Height in cm">
+            <div>
+                <label>Your weight</label>
+                <input type="text" id="weight-in-kgs" placeholder="kg">
+            </div>
+            
+            <div>
+                <label>Your height </label>
+                <input type="text" id="height-in-cm" placeholder="cm">
+            </div>
         </div>
         
         <button type="submit" value="Calculate" id="submit_metric"> Calculate </button>
@@ -39,9 +46,15 @@
 
     <form id="calculate_imperial">
         <div id="imperial-inputs">
-            <input type="text" id="weight-in-lbs" placeholder="Weight in lbs">
-            <input type="text" id="height-in-ft" placeholder="Height in ft">
-            <input type="text" id="height-in-in" placeholder="and in">
+            <div>
+                <label>Your weight</label>
+                <input type="text" id="weight-in-lbs" placeholder="lbs">
+            </div>
+            <div>
+                <label>Your height</label>
+                <input type="text" id="height-in-ft" placeholder="ft">
+                <input type="text" id="height-in-in" placeholder="in">
+            </div>
         </div>
         
         <button type="submit" value="Calculate" id="submit_imperial"> Calculate </button>
