@@ -22,8 +22,8 @@ describe('User can calculate BMI', () => {
         await browser.fillIn("input[id='height-in-cm']", { with: "185" })
 
         await browser.clickOnButton("button[id='metric']")
-        let content = await browser.getContent("span[id='display_metric_value']")
-        expect(content).to.eql('Your BMI is 27.76');
+        let content = await browser.getContent("span[id='display_metric_message']")
+        expect(content).to.eql('Your BMI is 27.76 and you are Overweight');
     });
 
 });
@@ -51,8 +51,8 @@ describe('User can calculate BMI', () => {
         await browser.fillIn("input[id='height-in-in']", { with: "11" })
 
         await browser.clickOnButton("button[id='imperial']")
-        let content = await browser.getContent("span[id='display_imperial_value']")
-        expect(content).to.eql('Your BMI is 25.1');
+        let content = await browser.getContent("span[id='display_imperial_message']")
+        expect(content).to.eql('Your BMI is 25.1 and you are Overweight');
     });
 
 });

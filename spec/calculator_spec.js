@@ -16,7 +16,7 @@ describe("BMICalculator", function() {
 
   it("sets BMI message for a person using metric method", () => {
     calculator.metric_bmi(person);
-    expect(person.bmiMessage).to.equal('Overweight');
+    expect(person.bmiMessage).to.equal('Your BMI is 26.01 and you are Overweight');
   });
 
 });
@@ -38,7 +38,7 @@ describe("BMICalculator", function() {
 
   it("sets BMI message for a person using imperial method", () => {
     calculator.imperial_bmi(person);
-    expect(person.bmiMessage).to.equal('Overweight');
+    expect(person.bmiMessage).to.equal('Your BMI is 25.1 and you are Overweight');
   });
 
 });

@@ -11,97 +11,87 @@
 </head>
 
 <body>
+
 <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Metric')" id="def">Metric</button>
-        <button class="tablinks" onclick="openTab(event, 'Imperial')" id="notdef">Imperial</button>
+    <button class="tablinks" onclick="openTab(event, 'Metric')" id="def">Metric</button>
+    <button class="tablinks" onclick="openTab(event, 'Imperial')" id="notdef">Imperial</button>
 </div>
         
 
 
-      <div id="Metric" class="tabcontent">
+<div id="Metric" class="tabcontent">
 
-            <form id="calculate_metric">
-                    <div id="metric-inputs">
-                        <input type="text" id="weight-in-kgs" placeholder="Weight">
-                        <input type="text" id="height-in-cm" placeholder="Height">
-                    </div>
-            
-                    <button type="submit" value="Calculate" id="metric"> Calculate </button>
-            </form>
-            <div>
-                <span id="display_metric_value"></span>
-                <span id="display_metric_message"></span>
-            </div>
-            
-            <script type="text/javascript">
-                    const global = {}
-            
-                    global.calculateMetric = document.querySelector('#calculate_metric');
-                    global.displayValueMetric = document.querySelector('#display_metric_value');
-                    global.displayMessageMetric = document.querySelector('#display_metric_message');
-            
-                    document.addEventListener('DOMContentLoaded', () => {
-                        global.calculateMetric.addEventListener('submit', event => {
-                            event.preventDefault();
-                            calculateMetric()
-                                .then(person => { 
-                                    global.displayValueMetric.innerHTML = `Your BMI is ${person.bmiValue}`;
-                                    global.displayMessageMetric.innerHTML = `and you are ${person.bmiMessage}`;
-                                })
-                        })
-                    });
-            
-                    const calculateMetric = () => {
-                        return new Promise(resolve => {
-                            let w = parseFloat(document.getElementById('weight-in-kgs').value);
-                            let h = parseFloat(document.getElementById('height-in-cm').value);
-                            let person = new Person({
-                                weight: w,
-                                height: h,
-                            });
-                            person.calculate_metric();
-                            resolve(person);
-                        })
-                    };
-            </script>
-      </div>
-      
-      <div id="Imperial" class="tabcontent">
-
-        <form id="calculate_imperial">
-                <div id="imperial-inputs">
-                    <input type="text" id="weight-in-lbs" placeholder="Pounds">
-                    <input type="text" id="height-in-ft" placeholder="Feet">
-                    <input type="text" id="height-in-in" placeholder="Inches">
-                </div>
-        
-                <button type="submit" value="Calculate" id="imperial"> Calculate </button>
-        </form>
-        <div>
-            <span id="display_imperial_value"></span>
-            <span id="display_imperial_message"></span>
+    <form id="calculate_metric">
+        <div id="metric-inputs">
+            <input type="text" id="weight-in-kgs" placeholder="Weight">
+            <input type="text" id="height-in-cm" placeholder="Height">
         </div>
         
-            <script type="text/javascript">
+        <button type="submit" value="Calculate" id="metric"> Calculate </button>
     
-        
-                global.calculateImperial = document.querySelector('#calculate_imperial');
-                global.displayValueImperial = document.querySelector('#display_imperial_value');
-                global.displayMessageImperial = document.querySelector('#display_imperial_message');
-        
-                document.addEventListener('DOMContentLoaded', () => {
+    </form>
+            
+    <div>
+        <span id="display_metric_message"></span>
+    </div>
 
-                    global.calculateImperial.addEventListener('submit', event => {
-                        event.preventDefault();
-                        calculateImperial()
-                            .then(person => { 
-                                global.displayValueImperial.innerHTML = `Your BMI is ${person.bmiValue}`;
-                                global.displayMessageImperial.innerHTML = `and you are ${person.bmiMessage}`;
-                            })
-                    })
-                });
+</div>
+      
+
+<div id="Imperial" class="tabcontent">
+
+    <form id="calculate_imperial">
+        <div id="imperial-inputs">
+            <input type="text" id="weight-in-lbs" placeholder="Pounds">
+            <input type="text" id="height-in-ft" placeholder="Feet">
+            <input type="text" id="height-in-in" placeholder="Inches">
+        </div>
         
-                const calculateImperial = () => {
+        <button type="submit" value="Calculate" id="imperial"> Calculate </button>
+    
+    </form>
+    
+    <div>
+        <span id="display_imperial_message"></span>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    
+    const global = {}
+
+    global.calculateMetric = document.querySelector('#calculate_metric');
+    global.calculateImperial = document.querySelector('#calculate_imperial');
+    global.displayMessageMetric = document.querySelector('#display_metric_message');
+    global.displayMessageImperial = document.querySelector('#display_imperial_message');
+
+    const calculateMetric = () => {
+        return new Promise(resolve => {
+            let w = parseFloat(document.getElementById('weight-in-kgs').value);
+            let h = parseFloat(document.getElementById('height-in-cm').value);
+            let person = new Person({
+                weight: w,
+                height: h,
+            });
+            person.calculate_metric();
+            resolve(person);
+        })
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        global.calculateMetric.addEventListener('submit', event => {
+            event.preventDefault();
+            calculateMetric()
+                .then(person => { 
+                    global.displayMessageMetric.innerHTML = person.bmiMessage;
+                })
+        })
+    });
+
+    
+
+    const calculateImperial = () => {
                     return new Promise(resolve => {
                         let l = parseFloat(document.getElementById('weight-in-lbs').value);
                         let f = parseFloat(document.getElementById('height-in-ft').value);
@@ -114,10 +104,20 @@
                         person.calculate_imperial();
                         resolve(person);
                     })
-                };
-        </script>
-  </div>
+    };
 
+    document.addEventListener('DOMContentLoaded', () => {
+        global.calculateImperial.addEventListener('submit', event => {
+            event.preventDefault();
+            calculateImperial()
+            .then(person => { 
+                global.displayMessageImperial.innerHTML = person.bmiMessage;
+            })
+        })
+    });
+        
+                
+</script>
 
 
 
