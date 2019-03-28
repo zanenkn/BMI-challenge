@@ -32,7 +32,7 @@
     </form>
             
     <div>
-        <span id="display_metric_message"></span>
+        <span id="display_bmi_message"></span>
     </div>
 
 </div>
@@ -52,7 +52,7 @@
     </form>
     
     <div>
-        <span id="display_imperial_message"></span>
+        <span id="display_bmi_message"></span>
     </div>
 
 </div>
@@ -63,8 +63,7 @@
 
     global.calculateMetric = document.querySelector('#calculate_metric');
     global.calculateImperial = document.querySelector('#calculate_imperial');
-    global.displayMessageMetric = document.querySelector('#display_metric_message');
-    global.displayMessageImperial = document.querySelector('#display_imperial_message');
+    global.displayBMIMessage = document.querySelector('#display_bmi_message');
 
     const calculateMetric = () => {
         return new Promise(resolve => {
@@ -84,7 +83,7 @@
             event.preventDefault();
             calculateMetric()
                 .then(person => { 
-                    global.displayMessageMetric.innerHTML = person.bmiMessage;
+                    global.displayBMIMessage.innerHTML = person.bmiMessage;
                 })
         })
     });
@@ -111,7 +110,7 @@
             event.preventDefault();
             calculateImperial()
             .then(person => { 
-                global.displayMessageImperial.innerHTML = person.bmiMessage;
+                global.displayBMIMessage.innerHTML = person.bmiMessage;
             })
         })
     });
