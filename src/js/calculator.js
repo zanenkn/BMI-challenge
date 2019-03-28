@@ -23,6 +23,7 @@ BMICalculator.prototype.metric_bmi = function(obj) {
 
 
 function setBMIMessage (obj){
+
   if (obj.bmiValue < 18.5) {
     obj.bmiMessage = "Your BMI is " + obj.bmiValue + " and you are Underweight"
   }

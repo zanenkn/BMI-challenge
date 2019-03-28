@@ -30,7 +30,7 @@
     
     </form>
 
-    <span id="display_bmi_message"></span>
+    <span id="display_met_message"></span>
 
 </div>
       
@@ -48,7 +48,7 @@
     
     </form>
     
-    <span id="display_bmi_message"></span> 
+    <span id="display_imp_message"></span> 
 
 </div>
 
@@ -58,7 +58,18 @@
 
     global.calculateMetric = document.querySelector('#calculate_metric');
     global.calculateImperial = document.querySelector('#calculate_imperial');
-    global.displayBMIMessage = document.querySelector('#display_bmi_message');
+    global.displayImperialMessage = document.querySelector('#display_imp_message');
+    global.displayMetricMessage = document.querySelector('#display_met_message');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        global.calculateMetric.addEventListener('submit', event => {
+            event.preventDefault();
+            calculateMetric()
+                .then(person => { 
+                    global.displayMetricMessage.innerHTML = person.bmiMessage;
+                })
+        })
+    });
 
     const calculateMetric = () => {
         return new Promise(resolve => {
@@ -73,17 +84,17 @@
         })
     };
 
+
+
     document.addEventListener('DOMContentLoaded', () => {
-        global.calculateMetric.addEventListener('submit', event => {
+        global.calculateImperial.addEventListener('submit', event => {
             event.preventDefault();
-            calculateMetric()
+            calculateImperial()
                 .then(person => { 
-                    global.displayBMIMessage.innerHTML = person.bmiMessage;
+                    global.displayImperialMessage.innerHTML = person.bmiMessage;
                 })
         })
     });
-
-    
 
     const calculateImperial = () => {
         return new Promise(resolve => {
@@ -99,16 +110,6 @@
             resolve(person);
             })
     };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        global.calculateImperial.addEventListener('submit', event => {
-            event.preventDefault();
-            calculateImperial()
-                .then(person => { 
-                    global.displayBMIMessage.innerHTML = person.bmiMessage;
-                })
-        })
-    });
         
                 
 </script>
