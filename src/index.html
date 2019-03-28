@@ -13,27 +13,24 @@
 <body>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Metric')" id="def">Metric</button>
-    <button class="tablinks" onclick="openTab(event, 'Imperial')" id="notdef">Imperial</button>
+    <button class="tablinks" onclick="openTab(event, 'Metric')" id="metric">Metric</button>
+    <button class="tablinks" onclick="openTab(event, 'Imperial')" id="imperial">Imperial</button>
 </div>
         
-
 
 <div id="Metric" class="tabcontent">
 
     <form id="calculate_metric">
         <div id="metric-inputs">
-            <input type="text" id="weight-in-kgs" placeholder="Weight">
-            <input type="text" id="height-in-cm" placeholder="Height">
+            <input type="text" id="weight-in-kgs" placeholder="Weight in kg">
+            <input type="text" id="height-in-cm" placeholder="Height in cm">
         </div>
         
-        <button type="submit" value="Calculate" id="metric"> Calculate </button>
+        <button type="submit" value="Calculate" id="submit_metric"> Calculate </button>
     
     </form>
-            
-    <div>
-        <span id="display_bmi_message"></span>
-    </div>
+
+    <span id="display_bmi_message"></span>
 
 </div>
       
@@ -42,18 +39,16 @@
 
     <form id="calculate_imperial">
         <div id="imperial-inputs">
-            <input type="text" id="weight-in-lbs" placeholder="Pounds">
-            <input type="text" id="height-in-ft" placeholder="Feet">
-            <input type="text" id="height-in-in" placeholder="Inches">
+            <input type="text" id="weight-in-lbs" placeholder="Weight in lbs">
+            <input type="text" id="height-in-ft" placeholder="Height in ft">
+            <input type="text" id="height-in-in" placeholder="and in">
         </div>
         
-        <button type="submit" value="Calculate" id="imperial"> Calculate </button>
+        <button type="submit" value="Calculate" id="submit_imperial"> Calculate </button>
     
     </form>
     
-    <div>
-        <span id="display_bmi_message"></span>
-    </div>
+    <span id="display_bmi_message"></span> 
 
 </div>
 
@@ -91,27 +86,27 @@
     
 
     const calculateImperial = () => {
-                    return new Promise(resolve => {
-                        let l = parseFloat(document.getElementById('weight-in-lbs').value);
-                        let f = parseFloat(document.getElementById('height-in-ft').value);
-                        let i = parseFloat(document.getElementById('height-in-in').value);
-                        let h = (f*12) + i
-                        let person = new Person({
-                            weight: l,
-                            height: h,
-                        });
-                        person.calculate_imperial();
-                        resolve(person);
-                    })
+        return new Promise(resolve => {
+            let l = parseFloat(document.getElementById('weight-in-lbs').value);
+            let f = parseFloat(document.getElementById('height-in-ft').value);
+            let i = parseFloat(document.getElementById('height-in-in').value);
+            let h = (f*12) + i
+            let person = new Person({
+                weight: l,
+                height: h,
+            });
+            person.calculate_imperial();
+            resolve(person);
+            })
     };
 
     document.addEventListener('DOMContentLoaded', () => {
         global.calculateImperial.addEventListener('submit', event => {
             event.preventDefault();
             calculateImperial()
-            .then(person => { 
-                global.displayBMIMessage.innerHTML = person.bmiMessage;
-            })
+                .then(person => { 
+                    global.displayBMIMessage.innerHTML = person.bmiMessage;
+                })
         })
     });
         
