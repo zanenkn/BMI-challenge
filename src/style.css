@@ -28,8 +28,12 @@ form {
   font-family: sans-serif;
 } 
 
-button {
-  padding-top: 20px;
-  padding-bottom: 20px;
+#submit_imperial, #submit_metric {
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-family: sans-serif;
+}
+
+#display_imp_message, #display_met_message {
+  font-family: sans-serif
 }
